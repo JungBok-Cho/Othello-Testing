@@ -3,7 +3,7 @@
 <br>
 This program is originally by X, and testing has been added by YYY.
 
-Test Git
+
 ##Gameplay
 Basically, there are two sided chips (also called discs) on a board. One side is black, and one side is white. Yours are the black chips and your opponents are the white. You can play the computer or another player. The goal is to end the game with as many chips showing your color as possible. To do this, you must sandwich your opponents chip(s) between a piece (showing your own color) currently on the board, and the piece you're putting down.
 
