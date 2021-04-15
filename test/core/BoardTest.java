@@ -111,5 +111,21 @@ class BoardTest {
         Assertions.assertFalse(board.isFull());
     }
 
+    @Test
+    void Board_valid_isFull_FullBoard_should_return_True() {
+        Board board = new Board();
+        int BOARD_LENGTH = 8;
+        int BOARD_WIDTH = 8;
+        Point point = new Point();
+
+        for (point.x = 0; point.x < BOARD_LENGTH; point.x++) {
+            for (point.y = 0; point.y < BOARD_WIDTH; point.y++) {
+                board.makeMove(point, SquareState.WHITE);
+            }
+        }
+
+        Assertions.assertTrue(board.isFull());
+    }
+
 
 }
