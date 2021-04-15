@@ -154,4 +154,19 @@ class BoardTest {
         Assertions.assertEquals(board.count(state), beginningEmpty);
     }
 
+    @Test
+    void Board_valid_markPossibleMoves_DefaultBoard_should_HaveBlackPossibleMoves() {
+        Board board = new Board();
+        SquareState statePossible = SquareState.PSSBL;
+
+        Set<Point> blackPossibleMoves = board.getPossibleMoves(Player.BLACK);
+
+        board.markPossibleMoves(blackPossibleMoves);
+
+        for(Point x : blackPossibleMoves) {
+            Assertions.assertEquals(board.getSquareState(x), statePossible);
+        }
+    }
+
+
 }
