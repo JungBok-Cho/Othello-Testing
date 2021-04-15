@@ -182,5 +182,16 @@ class BoardTest {
         }
     }
 
+    @Test
+    void Board_valid_unmarkPossibleMoves_DefaultBoard_Should_Not_HavePossibleMoves() {
+        Board board = new Board();
+        int ZERO = 0;
+
+        board.markPossibleMoves(board.getPossibleMoves(Player.WHITE));
+        board.unmarkPossibleMoves();
+
+        Assertions.assertEquals(board.count(SquareState.PSSBL), ZERO);
+    }
+
 
 }
