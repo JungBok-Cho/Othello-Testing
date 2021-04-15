@@ -210,6 +210,25 @@ class BoardTest {
         Assertions.assertEquals(board.toString(), boardToString);
     }
 
+    @Test
+    void Board_valid_toStringWithStats_DefaultBoard_Should_Print_Correctly() {
+        Board board = new Board();
+
+        String boardToStringWithStats =
+                "\n" +
+                "  A B C D E F G H\n" +
+                "1                \n" +
+                "2                \t● BLACK: 2\n" +
+                "3                \n" +
+                "4       ○ ●      \t○ WHITE: 2\n" +
+                "5       ● ○      \n" +
+                "6                \n" +
+                "7                \n" +
+                "8                \n";
+
+        Assertions.assertEquals(board.toStringWithStats(), boardToStringWithStats);
+    }
+
 
 
 }
