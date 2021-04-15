@@ -104,6 +104,12 @@ class BoardTest {
         Assertions.assertEquals(board.getSquares(SquareState.EMPTY), emptyPoints);
     }
 
+    @Test
+    void Board_valid_isFull_DefaultBoard_should_return_false() {
+        Board board = new Board();
+
+        Assertions.assertFalse(board.isFull());
+    }
 
 
 }
