@@ -279,6 +279,16 @@ class BoardTest {
         Assertions.assertNotEquals(board, clonedBoard);
     }
 
+    @Test
+    void Board_valid_clone_Should_Have_SameBoardSituation() {
+        Board board = new Board();
+        board.makeMove(new Point(2,3), SquareState.BLACK);
+
+        Board clonedBoard = board.clone();
+
+        Assertions.assertEquals(board.toString(), clonedBoard.toString());
+    }
+
 
 
 }
