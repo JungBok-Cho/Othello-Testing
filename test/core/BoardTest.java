@@ -168,5 +168,19 @@ class BoardTest {
         }
     }
 
+    @Test
+    void Board_valid_markPossibleMoves_DefaultBoard_should_HaveWhitePossibleMoves() {
+        Board board = new Board();
+        SquareState statePossible = SquareState.PSSBL;
+
+        Set<Point> whitePossibleMoves = board.getPossibleMoves(Player.WHITE);
+
+        board.markPossibleMoves(whitePossibleMoves);
+
+        for(Point x : whitePossibleMoves) {
+            Assertions.assertEquals(board.getSquareState(x), statePossible);
+        }
+    }
+
 
 }
