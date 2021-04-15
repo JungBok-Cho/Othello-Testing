@@ -193,5 +193,23 @@ class BoardTest {
         Assertions.assertEquals(board.count(SquareState.PSSBL), ZERO);
     }
 
+    @Test
+    void Board_valid_toString_DefaultBoard_Should_Print_Correctly() {
+        Board board = new Board();
+        String boardToString =
+                "  A B C D E F G H\n" +
+                "1                \n" +
+                "2                \n" +
+                "3                \n" +
+                "4       ○ ●      \n" +
+                "5       ● ○      \n" +
+                "6                \n" +
+                "7                \n" +
+                "8                \n";
+
+        Assertions.assertEquals(board.toString(), boardToString);
+    }
+
+
 
 }
