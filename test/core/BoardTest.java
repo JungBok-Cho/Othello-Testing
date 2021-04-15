@@ -4,6 +4,10 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.awt.Point;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,7 +31,7 @@ class BoardTest {
     }
 
     @Test
-    void Board_CreateBoard_Should_Initiazlie_Board() {
+    void Board_valid_CreateBoard_Should_Initiazlie_Board() {
         Board board = new Board();
         int BOARD_LENGTH = 8;
         int BOARD_WIDTH = 8;
@@ -51,5 +55,17 @@ class BoardTest {
             }
         }
     }
+
+    @Test
+    void Board_valid_getSquares_should_ReturnALlDefaultBlack() {
+        Board board = new Board();
+        Set<Point> blackPoints = new HashSet<>();
+        blackPoints.add(new Point(3,4));
+        blackPoints.add(new Point(4,3));
+
+        Assertions.assertEquals(board.getSquares(SquareState.BLACK), blackPoints);
+    }
+
+
 
 }
