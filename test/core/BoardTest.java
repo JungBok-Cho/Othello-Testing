@@ -76,6 +76,34 @@ class BoardTest {
         Assertions.assertEquals(board.getSquares(SquareState.WHITE), whitePoints);
     }
 
+    @Test
+    void Board_valid_getSquares_should_ReturnALlDefaultEmpty() {
+        Board board = new Board();
+        Set<Point> emptyPoints = new HashSet<>();
+        int BOARD_LENGTH = 8;
+        int BOARD_WIDTH = 8;
+        int middleNum1 = BOARD_LENGTH / 2;
+        int middleNum2 = BOARD_LENGTH / 2 - 1;
+
+        for (int i = 0; i < BOARD_LENGTH; i++) {
+            for (int j = 0; j < BOARD_WIDTH; j++) {
+                if(i == middleNum1 && j == middleNum1) {
+                    continue;
+                } else if(i == middleNum2 && j == middleNum2) {
+                    continue;
+                } else if(i == middleNum1 && j == middleNum2) {
+                    continue;
+                } else if(i == middleNum2 && j == middleNum1) {
+                    continue;
+                } else {
+                    emptyPoints.add(new Point(i, j));
+                }
+            }
+        }
+
+        Assertions.assertEquals(board.getSquares(SquareState.EMPTY), emptyPoints);
+    }
+
 
 
 }
