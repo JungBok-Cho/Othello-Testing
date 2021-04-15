@@ -136,5 +136,14 @@ class BoardTest {
         Assertions.assertEquals(board.count(state), beginningBlack);
     }
 
+    @Test
+    void Board_valid_Count_DefaultBoard_should_Have2White() {
+        Board board = new Board();
+        SquareState state = SquareState.WHITE;
+        int beginningWhite = 2;
+
+        Assertions.assertEquals(board.count(state), beginningWhite);
+    }
+
 
 }
