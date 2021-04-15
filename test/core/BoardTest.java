@@ -269,4 +269,16 @@ class BoardTest {
                                 boardToStringWithStatsTurn);
     }
 
+    @Test
+    void Board_valid_clone_Should_Return_ClonedBoard() {
+        Board board = new Board();
+        board.makeMove(new Point(2,3), SquareState.BLACK);
+
+        Board clonedBoard = board.clone();
+
+        Assertions.assertNotEquals(board, clonedBoard);
+    }
+
+
+
 }
