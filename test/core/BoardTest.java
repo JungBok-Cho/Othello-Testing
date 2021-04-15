@@ -66,6 +66,16 @@ class BoardTest {
         Assertions.assertEquals(board.getSquares(SquareState.BLACK), blackPoints);
     }
 
+    @Test
+    void Board_valid_getSquares_should_ReturnALlDefaultWhite() {
+        Board board = new Board();
+        Set<Point> whitePoints = new HashSet<>();
+        whitePoints.add(new Point(3,3));
+        whitePoints.add(new Point(4,4));
+
+        Assertions.assertEquals(board.getSquares(SquareState.WHITE), whitePoints);
+    }
+
 
 
 }
