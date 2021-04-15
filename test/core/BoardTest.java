@@ -145,5 +145,13 @@ class BoardTest {
         Assertions.assertEquals(board.count(state), beginningWhite);
     }
 
+    @Test
+    void Board_valid_Count_DefaultBoard_should_Have60Empty() {
+        Board board = new Board();
+        SquareState state = SquareState.EMPTY;
+        int beginningEmpty = 60;
+
+        Assertions.assertEquals(board.count(state), beginningEmpty);
+    }
 
 }
