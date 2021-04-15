@@ -289,6 +289,15 @@ class BoardTest {
         Assertions.assertEquals(board.toString(), clonedBoard.toString());
     }
 
+    @Test
+    void Board_valid_clone_ModifiedBoard_Should_Be_Different_From_Default() {
+        Board board = new Board();
+        board.makeMove(new Point(2,3), SquareState.BLACK);
 
+        Board clonedBoard = board.clone();
+        Board newBoard = new Board();
+
+        Assertions.assertNotEquals(clonedBoard, newBoard);
+    }
 
 }
