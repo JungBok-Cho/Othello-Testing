@@ -229,6 +229,25 @@ class BoardTest {
         Assertions.assertEquals(board.toStringWithStats(), boardToStringWithStats);
     }
 
+    @Test
+    void Board_valid_toStringWithStatsBlackTurn_DefaultBoard_Should_Print_Correctly() {
+        Board board = new Board();
+
+        String boardToStringWithStatsTurn =
+                "\n" +
+                "  A B C D E F G H\n" +
+                "1                \n" +
+                "2                \t● BLACK: 2\n" +
+                "3                \n" +
+                "4       ○ ●      \t○ WHITE: 2\n" +
+                "5       ● ○      \n" +
+                "6                \tBLACK's turn!\n" +
+                "7                \n" +
+                "8                \n";
+
+        Assertions.assertEquals(board.toStringWithStatsTurn(Player.BLACK),
+                                boardToStringWithStatsTurn);
+    }
 
 
 }
