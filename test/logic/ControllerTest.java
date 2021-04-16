@@ -94,4 +94,12 @@ class ControllerTest {
         Assertions.assertEquals(winner.color(), SquareState.WHITE);
     }
 
+    @Test
+    void Controller_IsDraw_Valid_Should_Return_True() {
+        Controller controller = Controller.getInstance();
+
+        Assertions.assertTrue(controller.isDraw());
+    }
+
+
 }
