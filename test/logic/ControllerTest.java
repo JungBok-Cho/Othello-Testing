@@ -101,5 +101,18 @@ class ControllerTest {
         Assertions.assertTrue(controller.isDraw());
     }
 
+    @Test
+    void Controller_IsDraw_Valid_Should_Return_False() {
+        Controller controller = Controller.getInstance();
+        Point newPoint = new Point(2,3);
+
+        controller.makeMove(newPoint);
+
+        boolean result = controller.isDraw();
+
+        controller.init();
+
+        Assertions.assertFalse(result);
+    }
 
 }
