@@ -19,4 +19,14 @@ class ControllerTest {
         Assertions.assertNotEquals(controller, null);
     }
 
+    @Test
+    void Controller_MarkPossibleMoves_Valid_Should_Return_PossibleMoves() {
+        Controller controller = Controller.getInstance();
+        int ZERO = 0;
+
+        Set<Point> openSpots = controller.markPossibleMoves();
+
+        Assertions.assertNotEquals(openSpots.size(), ZERO);
+    }
+
 }
