@@ -32,5 +32,16 @@ class MoveExplorerTest {
         assertTrue(squaresThatAreFilled.contains(knownChanged));
     }
 
+    @Test
+    void MoveExplorer_explore_Valid_ShouldExploreMoreThanOnceInADirection() {
+        Board board = new Board();
+        Point moveLoc = new Point(2, 3);
+        Point possibleMove = new Point(1, 3);
+
+        board.makeMove(moveLoc, SquareState.WHITE);
+        Set<Point> possibleMoves = MoveExplorer.explore(board, SquareState.BLACK);
+
+        assertTrue(possibleMoves.contains(possibleMove));
+    }
 
 }
