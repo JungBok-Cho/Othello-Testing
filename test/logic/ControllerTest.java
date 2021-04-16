@@ -56,5 +56,12 @@ class ControllerTest {
         Assertions.assertEquals(controller.getBlackScore(), defaultBlacks);
     }
 
+    @Test
+    void Controller_GetWhiteScore_Valid_DefaultBoard_Should_Return_2White() {
+        Controller controller = Controller.getInstance();
+        int defaultWhites = 2;
+
+        Assertions.assertEquals(controller.getWhiteScore(), defaultWhites);
+    }
 
 }
