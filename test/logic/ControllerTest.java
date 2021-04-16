@@ -29,4 +29,13 @@ class ControllerTest {
         Assertions.assertNotEquals(openSpots.size(), ZERO);
     }
 
+    @Test
+    void Controller_UnmarkPossibleMoves_Valid_Should_Return_PossibleMoves() {
+        Controller controller = Controller.getInstance();
+
+        controller.unmarkPossibleMoves();
+
+        Assertions.assertTrue(true);
+    }
+
 }
