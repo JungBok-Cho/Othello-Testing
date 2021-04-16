@@ -47,4 +47,14 @@ class ControllerTest {
 
         Assertions.assertTrue(squarsToFill.size() > 0);
     }
+
+    @Test
+    void Controller_GetBlackScore_Valid_DefaultBoard_Should_Return_2Black() {
+        Controller controller = Controller.getInstance();
+        int defaultBlacks = 2;
+
+        Assertions.assertEquals(controller.getBlackScore(), defaultBlacks);
+    }
+
+
 }
