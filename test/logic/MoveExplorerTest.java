@@ -15,13 +15,22 @@ import static org.junit.jupiter.api.Assertions.*;
 class MoveExplorerTest {
 
     @Test
-    void MoveExplorer_Explore_Valid_ShouldStartWith4TilesFilled() {
+    void MoveExplorer_explore_Valid_ShouldStartWith4TilesAvailable() {
         Board board = new Board();
         Set<Point> possibleMoves = MoveExplorer.explore(board, SquareState.BLACK);
         int startingOptions = 4;
-
-        System.out.println(possibleMoves);
         assertEquals(startingOptions, possibleMoves.size());
     }
+
+    @Test
+    void MoveExplorer_squaresToFill_Valid_ShouldReturnASquareToChange() {
+        Board board = new Board();
+        Point seed = new Point(5, 3);
+        Point knownChanged = new Point(4, 3);
+
+        Set<Point> squaresThatAreFilled = MoveExplorer.squaresToFill(board, seed);
+        assertTrue(squaresThatAreFilled.contains(knownChanged));
+    }
+
 
 }
