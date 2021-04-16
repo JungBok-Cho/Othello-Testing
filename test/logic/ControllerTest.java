@@ -12,5 +12,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ControllerTest {
 
+    @Test
+    void Controller_GetInstance_Valid_Should_Return_Singleton() {
+        Controller controller = Controller.getInstance();
+
+        Assertions.assertNotEquals(controller, null);
+    }
 
 }
