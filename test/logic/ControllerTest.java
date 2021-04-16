@@ -1,6 +1,7 @@
 package logic;
 
 import core.Board;
+import core.Player;
 import core.SquareState;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -65,5 +66,19 @@ class ControllerTest {
 
         Assertions.assertEquals(controller.getWhiteScore(), defaultWhites);
     }
+
+    @Test
+    void Controller_GetWinner_Valid_Should_Return_BlackWinner() {
+        Controller controller = Controller.getInstance();
+        Point newPoint = new Point(2,3);
+
+        controller.makeMove(newPoint);
+        Player winner = controller.getWinner();
+
+        controller.init();
+
+        Assertions.assertEquals(winner.color(), SquareState.BLACK);
+    }
+
 
 }
