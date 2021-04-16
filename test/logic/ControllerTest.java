@@ -45,6 +45,8 @@ class ControllerTest {
 
         Set<Point> squarsToFill = controller.makeMove(newPoint);
 
+        controller.init();
+
         Assertions.assertTrue(squarsToFill.size() > 0);
     }
 
