@@ -5,124 +5,219 @@ import org.junit.jupiter.api.Test;
 
 
 class SquareStateTest {
-    // Character type state information
-    char blackChar = '●';
-    char whiteChar = '○';
-    char pssblChar = '.';
-    char emptyChar = ' ';
 
-    // Character type state information
-    String blackStr = "●";
-    String whiteStr = "○";
-    String pssblStr = ".";
-    String emptyStr = " ";
-
-    // Check for Opposites
+    /*
+     Testcases to check for Opposites
+     */
     @Test
-    void verifyBlackSquareStateOpposite() {
-        SquareState squareState = SquareState.BLACK;
-        // should create 8 x 8 board
+    void SquareState_Opposite_Valid_Black_To_White() {
+        SquareState currentSquareState = SquareState.BLACK;
+        SquareState oppositeState = currentSquareState.opposite();
 
-        SquareState oppositeState = squareState.opposite();
-
-        // squareState should not be black
+        // currentSquareState should not be black
         Assertions.assertNotEquals(oppositeState, SquareState.BLACK);
 
-        // squareState should be white
+        // currentSquareState should be white
         Assertions.assertEquals(oppositeState, SquareState.WHITE);
     }
 
     @Test
-    void verifyWhiteSquareStateOpposite() {
-        SquareState squareState = SquareState.WHITE;
-        // should create 8 x 8 board
+    void SquareState_Opposite_Valid_White_To_Black() {
+        SquareState currentSquareState = SquareState.WHITE;
+        SquareState oppositeState = currentSquareState.opposite();
 
-        SquareState oppositeState = squareState.opposite();
-        // squareState should not be white
+        //currentSquareState should not be white
         Assertions.assertNotEquals(oppositeState, SquareState.WHITE);
 
-        //squareState should be black
+        //currentSquareState should be black
         Assertions.assertEquals(oppositeState, SquareState.BLACK);
     }
 
     @Test
-    void verifyEmptySquareStateOpposite() {
-        SquareState squareState = SquareState.EMPTY;
-        // should create 8 x 8 board
-        Assertions.assertEquals(squareState.opposite(), SquareState.EMPTY);
-    }
-
-    // Check for Symbols
-    @Test
-    void verifyBlackSquareStateSymbol() {
-        SquareState squareState = SquareState.BLACK;
-        // should create 8 x 8 board
-        Assertions.assertEquals(squareState.symbol(), this.blackChar);
+    void SquareState_Opposite_Invalid_Empty() {
+        SquareState currentSquareState = SquareState.EMPTY;
+        SquareState oppositeSquareState = currentSquareState.opposite();
+        
+        Assertions.assertNotEquals(oppositeSquareState, SquareState.EMPTY);
     }
 
     @Test
-    void verifyWhiteSquareStateSymbol() {
-        SquareState squareState = SquareState.WHITE;
-        // should create 8 x 8 board
-        Assertions.assertEquals(squareState.symbol(), this.whiteChar);
+    void SquareState_Opposite_Invalid_Next_possible() {
+        SquareState currentSquareState = SquareState.PSSBL;
+        SquareState oppositeSquareState = currentSquareState.opposite();
+
+        Assertions.assertNotEquals(oppositeSquareState, SquareState.PSSBL);
+    }
+
+    /*
+    Test cases to check for Symbols
+     */
+    @Test
+    void SquareState_Symbol_Valid_Black() {
+        char blackSymbol = '●';
+        SquareState currentSquareState = SquareState.BLACK;
+        char currentSquareStateSymbol = currentSquareState.symbol();
+
+        Assertions.assertEquals(currentSquareStateSymbol, blackSymbol);
     }
 
     @Test
-    void verifyEmptySquareStateSymbol() {
-        SquareState squareState = SquareState.EMPTY;
-        // should create 8 x 8 board
-        Assertions.assertEquals(squareState.symbol(), this.emptyChar);
+    void SquareState_Symbol_Valid_White() {
+        char whiteSymbol = '○';
+        SquareState currentSquareState = SquareState.WHITE;
+        char currentSquareStateSymbol = currentSquareState.symbol();
+
+        Assertions.assertEquals(currentSquareStateSymbol, whiteSymbol);
     }
 
     @Test
-    void verifyNextPossSquareStateSymbol() {
-        SquareState squareState = SquareState.PSSBL;
-        // should create 8 x 8 board
-        Assertions.assertEquals(squareState.symbol(), this.pssblChar);
-    }
-
-    // Check for Symbols of Opposite state
-    @Test
-    void verifyWhiteSquareStateOppositeSymbol() {
-        SquareState squareState = SquareState.WHITE;
-        // should create 8 x 8 board
-        Assertions.assertEquals(squareState.opposite().symbol(), this.blackChar);
+    void SquareState_Symbol_Valid_Empty() {
+        char emptySymbol = ' ';
+        SquareState currentSquareState = SquareState.EMPTY;
+        char currentSquareStateSymbol = currentSquareState.symbol();
+        
+        Assertions.assertEquals(currentSquareStateSymbol, emptySymbol);
     }
 
     @Test
-    void verifyBlackSquareStateOppositeSymbol() {
-        SquareState squareState = SquareState.BLACK;
-        // should create 8 x 8 board
-        Assertions.assertEquals(squareState.opposite().symbol(), this.whiteChar);
+    void SquareState_Symbol_Valid_Pssbl() {
+        char pssblSymbol = '.';
+        SquareState currentSquareState = SquareState.PSSBL;
+        char currentSquareStateSymbol = currentSquareState.symbol();
+
+        Assertions.assertEquals(currentSquareStateSymbol, pssblSymbol);
     }
 
-    // Check toString values of states
+    /*
+     Testcases to check for Symbols of Opposite state
+     */
     @Test
-    void verifyBlackSquareStateToString() {
-        SquareState squareState = SquareState.BLACK;
-        // should create 8 x 8 board
-        Assertions.assertEquals(squareState.toString(), String.valueOf(this.blackChar));
-    }
+    void SquareState_Opposite_Symbol_Valid_White_To_Black() {
+        char blackSymbol = '●';
+        char whiteSymbol = '○';
+        SquareState currentSquareState = SquareState.WHITE;
+        SquareState oppositeSquareState = currentSquareState.opposite();
+        char oppositeSquareStateSymbol = oppositeSquareState.symbol();
 
-    @Test
-    void verifyWhiteSquareStateToString() {
-        SquareState squareState = SquareState.WHITE;
-        // should create 8 x 8 board
-        Assertions.assertEquals(squareState.toString(), this.whiteStr);
-    }
+        // SquareState should not have white character
+        Assertions.assertNotEquals(oppositeSquareStateSymbol, whiteSymbol);
 
-    @Test
-    void verifyEmptySquareStateToString() {
-        SquareState squareState = SquareState.EMPTY;
-        // should create 8 x 8 board
-        Assertions.assertEquals(squareState.toString(), this.emptyStr);
+        // SquareState should have black Character
+        Assertions.assertEquals(oppositeSquareStateSymbol, blackSymbol);
     }
 
     @Test
-    void verifyPossibleSquareStateToString() {
-        SquareState squareState = SquareState.PSSBL;
-        // should create 8 x 8 board
-        Assertions.assertEquals(squareState.toString(), this.pssblStr);
+    void SquareState_Opposite_Symbol_Valid_Black_To_White() {
+        char blackSymbol = '●';
+        char whiteSymbol = '○';
+        SquareState currentSquareState = SquareState.BLACK;
+        SquareState oppositeSquareState = currentSquareState.opposite();
+        char oppositeSquareStateSymbol = oppositeSquareState.symbol();
+
+        // SquareState should not have black character
+        Assertions.assertNotEquals(oppositeSquareStateSymbol, blackSymbol);
+
+        // SquareState should have white character
+        Assertions.assertEquals(oppositeSquareStateSymbol, whiteSymbol);
+    }
+
+    @Test
+    void SquareState_Opposite_Symbol_Invalid_Empty() {
+        char emptySymbol = ' ';
+        SquareState currentSquareState = SquareState.EMPTY;
+        SquareState oppositeSquareState = currentSquareState.opposite();
+        char oppositeSquareStateSymbol = oppositeSquareState.symbol();
+
+        Assertions.assertNotEquals(oppositeSquareStateSymbol, emptySymbol);
+    }
+
+    @Test
+    void SquareState_Opposite_Symbol_Invalid_Pssbl() {
+        char pssblSymbol = '.';
+        SquareState currentSquareState = SquareState.PSSBL;
+        SquareState oppositeSquareState = currentSquareState.opposite();
+        char oppositeSquareStateSymbol = oppositeSquareState.symbol();
+
+        Assertions.assertNotEquals(oppositeSquareStateSymbol, pssblSymbol);
+    }
+
+    /*
+     Testcases to check toString values of states
+     */
+    @Test
+    void SquareState_ToString_Valid_Black() {
+        String blackString = "●";
+        SquareState currentSquareState = SquareState.BLACK;
+        String currentSquareStateString = currentSquareState.toString();
+
+        Assertions.assertEquals(currentSquareStateString, blackString);
+    }
+
+    @Test
+    void SquareState_ToString_Valid_White() {
+        String whiteString = "○";
+        SquareState currentSquareState = SquareState.WHITE;
+        String currentSquareStateString = currentSquareState.toString();
+        
+        Assertions.assertEquals(currentSquareStateString, whiteString);
+    }
+
+    @Test
+    void SquareState_ToString_Valid_Empty() {
+        String emptyString = " ";
+        SquareState currentSquareState = SquareState.EMPTY;
+        String currentSquareStateString = currentSquareState.toString();
+        
+        Assertions.assertEquals(currentSquareStateString, emptyString);
+    }
+
+    @Test
+    void SquareState_ToString_Valid_Pssbl() {
+        String pssblString = ".";
+        SquareState currentSquareState = SquareState.PSSBL;
+        String currentSquareStateString = currentSquareState.toString();
+        
+        Assertions.assertEquals(currentSquareStateString, pssblString);
+    }
+
+    @Test
+    void SquareState_Opposite_ToString_Valid_Black() {
+        String whiteString = "○";
+        SquareState currentSquareState = SquareState.BLACK;
+        SquareState oppositeSquareState = currentSquareState.opposite();
+        String oppositeSquareStateString = oppositeSquareState.toString();
+        
+        Assertions.assertEquals(oppositeSquareStateString, whiteString);
+    }
+
+    @Test
+    void SquareState_Opposite_ToString_Valid_White() {
+        String blackString = "●";
+        SquareState currentSquareState = SquareState.WHITE;
+        SquareState oppositeSquareState = currentSquareState.opposite();
+        String oppositeSquareStateString = oppositeSquareState.toString();
+        
+        Assertions.assertEquals(oppositeSquareStateString, blackString);
+    }
+
+    @Test
+    void SquareState_Opposite_ToString_Invalid_Pssbl() {
+        String pssblString = ".";
+        SquareState currentSquareState = SquareState.PSSBL;
+        SquareState oppositeSquareState = currentSquareState.opposite();
+        String oppositeSquareStateString = oppositeSquareState.toString();
+        
+        Assertions.assertNotEquals(oppositeSquareStateString, pssblString);
+    }
+
+    @Test
+    void SquareState_Opposite_ToString_Invalid_Empty() {
+        String emptyString = " ";
+        SquareState currentSquareState = SquareState.EMPTY;
+        SquareState oppositeSquareState = currentSquareState.opposite();
+        String oppositeSquareStateString = oppositeSquareState.toString();
+
+        Assertions.assertNotEquals(oppositeSquareStateString, emptyString);
     }
 
 }
