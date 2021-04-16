@@ -80,5 +80,18 @@ class ControllerTest {
         Assertions.assertEquals(winner.color(), SquareState.BLACK);
     }
 
+    @Test
+    void Controller_GetWinner_Valid_Should_Return_WhiteWinner() {
+        Controller controller = Controller.getInstance();
+        controller.changeTurn();
+        Point newPoint = new Point(4,5);
+
+        controller.makeMove(newPoint);
+        Player winner = controller.getWinner();
+
+        controller.init();
+
+        Assertions.assertEquals(winner.color(), SquareState.WHITE);
+    }
 
 }
