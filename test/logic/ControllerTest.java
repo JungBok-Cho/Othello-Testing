@@ -38,4 +38,13 @@ class ControllerTest {
         Assertions.assertTrue(true);
     }
 
+    @Test
+    void Controller_MakeMove_Valid_Should_Return_SquaresToFill() {
+        Controller controller = Controller.getInstance();
+        Point newPoint = new Point(2,3);
+
+        Set<Point> squarsToFill = controller.makeMove(newPoint);
+
+        Assertions.assertTrue(squarsToFill.size() > 0);
+    }
 }
