@@ -9,7 +9,7 @@ import java.util.Set;
 class BoardTest {
 
     @Test
-    void Board_valid_33isWhite_shouldCreateNewBoardWithInitialPlacement() {
+    void Board_Constructor_Valid_DefaultBoard_Should_Have_33White() {
         Board board = new Board();
         // should create 8 x 8 board
         Point point = new Point(3, 3);
@@ -17,7 +17,7 @@ class BoardTest {
     }
 
     @Test
-    void Board_valid_55IsEmpty_shouldCreateNewBoardWithInitialPlacement() {
+    void Board_Constructor_Valid_DefaultBoard_Should_Have_55Empty() {
         Board board = new Board();
         // should create 8 x 8 board
         Point point = new Point(5, 5);
@@ -25,7 +25,7 @@ class BoardTest {
     }
 
     @Test
-    void Board_valid_CreateBoard_Should_Initiazlie_Board() {
+    void Board_Constructor_Valid_DefaultBoard_Should_Initiazlie_Board() {
         Board board = new Board();
         int BOARD_LENGTH = 8;
         int BOARD_WIDTH = 8;
@@ -51,7 +51,7 @@ class BoardTest {
     }
 
     @Test
-    void Board_valid_getSquares_should_ReturnALlDefaultBlack() {
+    void Board_GetSquares_Valid_Should_Return_ALlDefaultBlack() {
         Board board = new Board();
         Set<Point> blackPoints = new HashSet<>();
         blackPoints.add(new Point(3,4));
@@ -61,7 +61,7 @@ class BoardTest {
     }
 
     @Test
-    void Board_valid_getSquares_should_ReturnALlDefaultWhite() {
+    void Board_GetSquares_Valid_Should_Return_ALlDefaultWhite() {
         Board board = new Board();
         Set<Point> whitePoints = new HashSet<>();
         whitePoints.add(new Point(3,3));
@@ -71,7 +71,7 @@ class BoardTest {
     }
 
     @Test
-    void Board_valid_getSquares_should_ReturnALlDefaultEmpty() {
+    void Board_GetSquares_Valid_Should_Return_ALlDefaultEmpty() {
         Board board = new Board();
         Set<Point> emptyPoints = new HashSet<>();
         int BOARD_LENGTH = 8;
@@ -99,14 +99,14 @@ class BoardTest {
     }
 
     @Test
-    void Board_valid_isFull_DefaultBoard_should_return_false() {
+    void Board_IsFull_Valid_DefaultBoard_Should_Return_False() {
         Board board = new Board();
 
         Assertions.assertFalse(board.isFull());
     }
 
     @Test
-    void Board_valid_isFull_FullBoard_should_return_True() {
+    void Board_IsFull_Valid_DefaultBoard_Should_Return_True() {
         Board board = new Board();
         int BOARD_LENGTH = 8;
         int BOARD_WIDTH = 8;
@@ -122,7 +122,7 @@ class BoardTest {
     }
 
     @Test
-    void Board_valid_Count_DefaultBoard_should_Have2Black() {
+    void Board_Count_Valid_DefaultBoard_Should_Have_2Black() {
         Board board = new Board();
         SquareState state = SquareState.BLACK;
         int beginningBlack = 2;
@@ -131,7 +131,7 @@ class BoardTest {
     }
 
     @Test
-    void Board_valid_Count_DefaultBoard_should_Have2White() {
+    void Board_Count_Valid_DefaultBoard_Should_Have_2White() {
         Board board = new Board();
         SquareState state = SquareState.WHITE;
         int beginningWhite = 2;
@@ -140,7 +140,7 @@ class BoardTest {
     }
 
     @Test
-    void Board_valid_Count_DefaultBoard_should_Have60Empty() {
+    void Board_Count_Valid_DefaultBoard_Should_Have_60Empty() {
         Board board = new Board();
         SquareState state = SquareState.EMPTY;
         int beginningEmpty = 60;
@@ -149,7 +149,7 @@ class BoardTest {
     }
 
     @Test
-    void Board_valid_markPossibleMoves_DefaultBoard_should_HaveBlackPossibleMoves() {
+    void Board_MarkPossibleMoves_Valid_DefaultBoard_Should_Have_BlackPossibleMoves() {
         Board board = new Board();
         SquareState statePossible = SquareState.PSSBL;
 
@@ -163,7 +163,7 @@ class BoardTest {
     }
 
     @Test
-    void Board_valid_markPossibleMoves_DefaultBoard_should_HaveWhitePossibleMoves() {
+    void Board_MarkPossibleMoves_Valid_DefaultBoard_Should_Have_WhitePossibleMoves() {
         Board board = new Board();
         SquareState statePossible = SquareState.PSSBL;
 
@@ -177,7 +177,7 @@ class BoardTest {
     }
 
     @Test
-    void Board_valid_unmarkPossibleMoves_DefaultBoard_Should_Not_HavePossibleMoves() {
+    void Board_UnmarkPossibleMoves_Valid_DefaultBoard_Should_Not_Have_PossibleMoves() {
         Board board = new Board();
         int ZERO = 0;
 
@@ -188,7 +188,7 @@ class BoardTest {
     }
 
     @Test
-    void Board_valid_toString_DefaultBoard_Should_Print_Correctly() {
+    void Board_ToString_Valid_DefaultBoard_Should_Print_Correctly() {
         Board board = new Board();
         String boardToString =
                 "  A B C D E F G H\n" +
@@ -205,7 +205,7 @@ class BoardTest {
     }
 
     @Test
-    void Board_valid_toStringWithStats_DefaultBoard_Should_Print_Correctly() {
+    void Board_ToStringWithStats_Valid_DefaultBoard_Should_Print_Correctly() {
         Board board = new Board();
 
         String boardToStringWithStats =
@@ -224,7 +224,7 @@ class BoardTest {
     }
 
     @Test
-    void Board_valid_toStringWithStatsBlackTurn_DefaultBoard_Should_Print_Correctly() {
+    void Board_ToStringWithStatsBlackTurn_Valid_DefaultBoard_Should_Print_Correctly() {
         Board board = new Board();
 
         String boardToStringWithStatsTurn =
@@ -244,7 +244,7 @@ class BoardTest {
     }
 
     @Test
-    void Board_valid_toStringWithStatsWhiteTurn_DefaultBoard_Should_Print_Correctly() {
+    void Board_ToStringWithStatsWhiteTurn_Valid_DefaultBoard_Should_Print_Correctly() {
         Board board = new Board();
 
         String boardToStringWithStatsTurn =
@@ -264,7 +264,7 @@ class BoardTest {
     }
 
     @Test
-    void Board_valid_clone_Should_Return_ClonedBoard() {
+    void Board_Clone_Valid_Should_Return_ClonedBoard() {
         Board board = new Board();
         board.makeMove(new Point(2,3), SquareState.BLACK);
 
@@ -274,7 +274,7 @@ class BoardTest {
     }
 
     @Test
-    void Board_valid_clone_Should_Have_SameBoardSituation() {
+    void Board_Clone_Valid_Should_Have_SameBoardSituation() {
         Board board = new Board();
         board.makeMove(new Point(2,3), SquareState.BLACK);
 
@@ -284,7 +284,7 @@ class BoardTest {
     }
 
     @Test
-    void Board_valid_clone_ModifiedBoard_Should_Be_Different_From_Default() {
+    void Board_Clone_Valid_ModifiedBoard_Should_Be_Different_From_Default() {
         Board board = new Board();
         board.makeMove(new Point(2,3), SquareState.BLACK);
 
