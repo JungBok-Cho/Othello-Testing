@@ -85,9 +85,7 @@ public final class Controller {
 	 *
 	 * @return if the game is over
 	 */
-	public boolean endOfGame() {
-		return board.isFull() || checkZeroScore() || canMove == CANNOTMOVE;
-	}
+	public boolean endOfGame() { return board.isFull() || checkZeroScore() || canMove == CANNOTMOVE; }
 
 	private boolean checkZeroScore() {
 		return getBlackScore() == 0 || getWhiteScore() == 0;
@@ -127,7 +125,6 @@ public final class Controller {
 	}
 
 	private static class ControllerHolder {
-
 		private static final Controller INSTANCE = new Controller();
 	}
 
