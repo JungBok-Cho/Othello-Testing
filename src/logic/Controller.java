@@ -55,9 +55,9 @@ public final class Controller {
 		return board.makeMove(move, player.color());
 	}
 
-	private int calcScore(SquareState state) {
-		return board.count(state);
-	}
+//	private int calcScore(SquareState state) {
+//		return board.count(state);
+//	}
 
 	public int getBlackScore() {
 		return board.count(SquareState.BLACK);
