@@ -136,6 +136,38 @@ class ControllerTest {
     }
 
     @Test
+    void Controller_EndOfGame_Valid_CannotMove_Should_Return_True() {
+        Controller controller = Controller.getInstance();
+        int BOARD_LENGTH = 8;
+        int BOARD_WIDTH = 8;
+        Point point = new Point();
+
+        for (point.x = 0; point.x < BOARD_LENGTH-2; point.x++) {
+            for (point.y = 0; point.y < BOARD_WIDTH; point.y++) {
+                controller.makeMove(point);
+            }
+        }
+
+        point.x = BOARD_LENGTH-2;
+        for (point.y = 0; point.y < BOARD_WIDTH-1; point.y++) {
+            controller.makeMove(point);
+        }
+
+        Point whitePoint = new Point(BOARD_LENGTH-2,BOARD_WIDTH-1);
+        controller.changeTurn();
+        controller.makeMove(whitePoint);
+
+        controller.markPossibleMoves();
+        controller.markPossibleMoves();
+
+        boolean result = controller.endOfGame();
+
+        controller.init();
+
+        Assertions.assertTrue(result);
+    }
+
+    @Test
     void Controller_EndOfGame_Valid_NotFullBoard_Should_Return_False() {
         Controller controller = Controller.getInstance();
 
