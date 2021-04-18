@@ -22,6 +22,14 @@ class DirectionTest {
 
             assertEquals(tempPoint, directionPoint);
         }
-
     }
+
+    @Test
+    void Direction_next_Valid_ShouldReturnNewPointOnMethodCallOnNonZeroStart() {
+        Point tempPoint = new Point(10, 10);
+        tempPoint = Direction.NORTHWEST.next(tempPoint);
+        assertEquals(tempPoint, new Point(9, 9));
+    }
+
+
 }
