@@ -31,5 +31,4 @@ class DirectionTest {
         assertEquals(tempPoint, new Point(9, 9));
     }
 
-
 }
