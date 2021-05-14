@@ -80,6 +80,17 @@ class TransformTest {
     }
 
     @Test
+    void pointToIndex2_Valid_Should_TurnPointIntoIndexBasedOnBoardLastTile() {
+        Transform tf = new Transform();
+        Point pt = new Point(Board.BOARD_LENGTH, Board.BOARD_WIDTH);
+        int expectedIndex = Board.BOARD_LENGTH * Board.BOARD_WIDTH + Board.BOARD_WIDTH;
+
+        int index = tf.pointToIndex(pt, Board.BOARD_LENGTH);
+
+        assertEquals(expectedIndex, index);
+    }
+
+    @Test
     void toBoardNotation_Valid_Should_Show1APosition() {
         Transform tf = new Transform();
         Point pt = new Point(0, 0);
