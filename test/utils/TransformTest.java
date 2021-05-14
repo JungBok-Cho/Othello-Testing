@@ -96,7 +96,7 @@ class TransformTest {
     void toBoardNotations_Valid_Should_ReturnLastPositionOnBoard() {
         Transform tf = new Transform();
         Point pt = new Point(Board.BOARD_LENGTH - 1, Board.BOARD_WIDTH - 1);
-        String expectedResult = "9I";
+        String expectedResult = "8H";
 
         String result = tf.toBoardNotation(pt);
 
