@@ -175,6 +175,7 @@ public final class Board implements Cloneable {
 		return sb.toString();
 	}
 
+
 	/**
 	 * Deep copy of this board.
 	 *
