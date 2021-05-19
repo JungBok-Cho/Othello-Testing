@@ -48,6 +48,7 @@ class NegaMaxTest {
         int depth = 4;
         Evaluation evalfunc = new ScoreDiffEval();
         Player player = Player.WHITE;
+
         SearchResult expected = new SearchResult(null, 0);
 
         int[][] coordinates = {
@@ -90,6 +91,29 @@ class NegaMaxTest {
     }
 
 
+    @Test
+    void simpleSearch_Valid_ShouldEndSearchAtDepthZero() {
+        Board board = new Board();
+        int depth = 0;
+        Evaluation evalfunc = new ScoreDiffEval();
+        Player player = Player.WHITE;
+
+        SearchResult expected = new SearchResult(null, -3);
+
+        int[][] coordinates = {
+                {4, 5}, {0, 0}, {2, 3}, {3,0}, {1, 0}, {2,0}, {4, 0}
+        };
+
+        setupBoard(board, coordinates);
+
+        Set<Point> possibleMoves = MoveExplorer.explore(board, player.color());
+        NegaMax nm = new NegaMax();
+        SearchResult actual = nm.simpleSearch(board, player, depth, evalfunc);
+        assertEquals(expected.getPoint(), actual.getPoint());
+        assertEquals(expected.getScore(), actual.getScore());
+    }
+
+
     // One player can't move, the other can
     @Test
     void simpleSearch_Valid_ShouldMoveOnWhenCurrentPlayerCanNotMove() {
@@ -112,6 +136,102 @@ class NegaMaxTest {
         assertEquals(expected.getScore(), actual.getScore());
     }
 
+    // Case -1
+    @Test
+    void search_Valid_ShouldFindNothingAndNegativeScoreWhenWhiteLoses() {
+        Board board = new Board();
+        int depth = 4;
+        int alpha = 1;
+        int beta = 2;
+        Evaluation evalfunc = new ScoreDiffEval();
+        Player player = Player.WHITE;
+        SearchResult expected = new SearchResult(null, Integer.MIN_VALUE);
+        int[][] coordinates = {
+                {4, 5}, {0, 0}, {2, 3}, {3,0}, {1, 0}, {2,0}, {4, 0}, {5, 0}, {5, 4}
+        };
+
+        setupBoard(board, coordinates);
+
+        Set<Point> possibleMoves = MoveExplorer.explore(board, player.color());
+        NegaMax nm = new NegaMax();
+        SearchResult actual = nm.search(board, player, alpha, beta, depth, evalfunc);
+        assertEquals(expected.getPoint(), actual.getPoint());
+        assertEquals(expected.getScore(), actual.getScore());
+    }
+
+    // Case 0
+    @Test
+    void search_Valid_ShouldFindNothingAndZeroScoreOnStalemate() {
+        Board board = new Board();
+        int depth = 4;
+        Evaluation evalfunc = new ScoreDiffEval();
+        Player player = Player.WHITE;
+        int alpha = 1;
+        int beta = 2;
+
+        SearchResult expected = new SearchResult(null, 0);
+
+        int[][] coordinates = {
+                {4, 5}, {0, 0}, {2, 3}, {3,0}, {1, 0}, {2,0}, {4, 0}, {5, 0}
+        };
+
+        setupBoard(board, coordinates);
+
+        Set<Point> possibleMoves = MoveExplorer.explore(board, player.color());
+        NegaMax nm = new NegaMax();
+        SearchResult actual = nm.search(board, player, alpha, beta, depth, evalfunc);
+        assertEquals(expected.getPoint(), actual.getPoint());
+        assertEquals(expected.getScore(), actual.getScore());
+    }
+
+
+    @Test
+    void search_Valid_ShouldEndSearchAtDepthZero() {
+        Board board = new Board();
+        int depth = 0;
+        Evaluation evalfunc = new ScoreDiffEval();
+        Player player = Player.WHITE;
+        int alpha = 1;
+        int beta = 2;
+
+        SearchResult expected = new SearchResult(null, -3);
+
+        int[][] coordinates = {
+                {4, 5}, {0, 0}, {2, 3}, {3,0}, {1, 0}, {2,0}, {4, 0}
+        };
+
+        setupBoard(board, coordinates);
+
+        Set<Point> possibleMoves = MoveExplorer.explore(board, player.color());
+        NegaMax nm = new NegaMax();
+        SearchResult actual = nm.search(board, player, alpha, beta, depth, evalfunc);
+        assertEquals(expected.getPoint(), actual.getPoint());
+        assertEquals(expected.getScore(), actual.getScore());
+    }
+
+    @Test
+    void search_Valid_ShouldReturnBestWhenAlphaLessThanBetaLessThanScore() {
+        Board board = new Board();
+        int depth = 4;
+        Evaluation evalfunc = new ScoreDiffEval();
+        Player player = Player.WHITE;
+        int alpha = Integer.MIN_VALUE + 1;
+        int beta = Integer.MIN_VALUE;
+
+        SearchResult expected = new SearchResult(new Point(5, 0), 0);
+
+        int[][] coordinates = {
+                {4, 5}, {0, 0}, {2, 3}, {3,0}, {1, 0}, {2,0}, {4, 0}
+        };
+
+        setupBoard(board, coordinates);
+
+        Set<Point> possibleMoves = MoveExplorer.explore(board, player.color());
+        NegaMax nm = new NegaMax();
+        SearchResult actual = nm.search(board, player, alpha, beta, depth, evalfunc);
+        assertEquals(expected.getPoint(), actual.getPoint());
+        assertEquals(expected.getScore(), actual.getScore());
+    }
 
     // Takes in a board and coordinates. For each coordinate, alternating between
     // black and then white, it places a piece (changes the state) on the board.
