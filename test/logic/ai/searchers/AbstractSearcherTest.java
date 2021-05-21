@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class AbstractSearcherTest {
 
     @Test
-    void abstract1() {
+    void max_Valid_ShouldReturnMaximumValue() {
         NegaMax nm = new NegaMax();
         int a = 1;
         int b = 9;
@@ -26,7 +26,7 @@ class AbstractSearcherTest {
     }
 
     @Test
-    void abstract2() {
+    void min_Valid_ShouldReturnMinimumValue() {
         NegaMax nm = new NegaMax();
         int a = 1;
         int b = 9;
@@ -46,16 +46,17 @@ class AbstractSearcherTest {
         Player player = Player.BLACK;
 
         List<Point> possibleMoves = new ArrayList<Point>(board.getPossibleMoves(player));
-
         Point testAgainst = nm.randomChoice(board, player);
         Boolean allResultsAreTheSame = true;
 
+        Point temp;
+
         for (int i = 0; i < 32; i++) {
-            if (nm.randomChoice(board, player) != testAgainst) {
+            temp = nm.randomChoice(board, player);
+            if (!temp.toString().equals(testAgainst.toString())) {
                 allResultsAreTheSame = false;
             }
         }
-
         assertFalse(allResultsAreTheSame);
     }
 
