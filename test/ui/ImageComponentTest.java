@@ -19,7 +19,7 @@ public class ImageComponentTest {
 
     @Test
     void ImageComponent_PreferredSize_Invalid() {
-        final Image image = Toolkit.getDefaultToolkit().getImage("src/ui/images/cols.png");
+        final Image image = Toolkit.getDefaultToolkit().getImage("src/ui/images/rows.png");
         ImageComponent imageComponent = new ImageComponent(image);
         int imageWidth = -1;
         int imageHeight = -1;
