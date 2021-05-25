@@ -294,4 +294,221 @@ class BoardTest {
         Assertions.assertNotEquals(clonedBoard, newBoard);
     }
 
+
+    /**
+     * Equivalence Testing
+     */
+    @Test
+    void Board_EquivalenceTesting_Valid_White_Should_Have_PossibleMoves() {
+        Board board = new Board();
+        // should create 8 x 8 board
+        Point point = new Point(5, 4);
+        board.makeMove(point, SquareState.BLACK);
+        Assertions.assertTrue(board.getPossibleMoves(Player.WHITE).size() > 0);
+    }
+
+    /**
+     * Equivalence Testing
+     */
+    @Test
+    void Board_EquivalenceTesting_Valid_Black_Should_Have_PossibleMoves() {
+        Board board = new Board();
+        // should create 8 x 8 board
+        Point point = new Point(3, 2);
+        board.makeMove(point, SquareState.WHITE);
+        Assertions.assertTrue(board.getPossibleMoves(Player.BLACK).size() > 0);
+    }
+
+    /**
+     * Boundary Testing
+     * Check if there are any possible moves below row index at 0
+     */
+    @Test
+    void Board_BoundaryTesting_Valid_FullBoard_Should_Have_No_PossibleMoves_Below_RowIndex0() {
+        Board board = new Board();
+        // should create 8 x 8 board
+        int BOARD_LENGTH = 8;
+        int BOARD_WIDTH = 8;
+        Point point = new Point();
+
+        for (point.x = 0; point.x < BOARD_LENGTH; point.x++) {
+            for (point.y = 0; point.y < BOARD_WIDTH; point.y++) {
+                board.makeMove(point, SquareState.BLACK);
+            }
+        }
+        point.x = BOARD_LENGTH-1;
+        for (point.y = 0; point.y < BOARD_WIDTH; point.y++) {
+            board.makeMove(point, SquareState.WHITE);
+        }
+        Assertions.assertEquals(board.getPossibleMoves(Player.WHITE).size(), 0);
+    }
+
+    /**
+     * Boundary Testing
+     * Check if there are any possible moves above row index at 7
+     */
+    @Test
+    void Board_BoundaryTesting_Valid_FullBoard_Should_Have_No_PossibleMoves_Above_RowIndex7() {
+        Board board = new Board();
+        // should create 8 x 8 board
+        int BOARD_LENGTH = 8;
+        int BOARD_WIDTH = 8;
+        Point point = new Point();
+
+        for (point.x = 0; point.x < BOARD_LENGTH; point.x++) {
+            for (point.y = 0; point.y < BOARD_WIDTH; point.y++) {
+                board.makeMove(point, SquareState.BLACK);
+            }
+        }
+        point.x = 0;
+        for (point.y = 0; point.y < BOARD_WIDTH; point.y++) {
+            board.makeMove(point, SquareState.WHITE);
+        }
+        Assertions.assertEquals(board.getPossibleMoves(Player.WHITE).size(), 0);
+    }
+
+    /**
+     * Boundary Testing
+     * Check if there are any possible moves above column index at 7
+     */
+    @Test
+    void Board_BoundaryTesting_Valid_FullBoard_Should_Have_No_PossibleMoves_Above_ColumnIndex7() {
+        Board board = new Board();
+        // should create 8 x 8 board
+        int BOARD_LENGTH = 8;
+        int BOARD_WIDTH = 8;
+        Point point = new Point();
+
+        for (point.x = 0; point.x < BOARD_LENGTH; point.x++) {
+            for (point.y = 0; point.y < BOARD_WIDTH; point.y++) {
+                board.makeMove(point, SquareState.BLACK);
+            }
+        }
+        point.y= 0;
+        for (point.x = 0; point.x < BOARD_WIDTH; point.x++) {
+            board.makeMove(point, SquareState.WHITE);
+        }
+        Assertions.assertEquals(board.getPossibleMoves(Player.WHITE).size(), 0);
+    }
+
+    /**
+     * Boundary Testing
+     * Check if there are any possible moves below column index at 0
+     */
+    @Test
+    void Board_BoundaryTesting_Valid_FullBoard_Should_Have_No_PossibleMoves_Below_ColumnIndex0() {
+        Board board = new Board();
+        // should create 8 x 8 board
+        int BOARD_LENGTH = 8;
+        int BOARD_WIDTH = 8;
+        Point point = new Point();
+
+        for (point.x = 0; point.x < BOARD_LENGTH; point.x++) {
+            for (point.y = 0; point.y < BOARD_WIDTH; point.y++) {
+                board.makeMove(point, SquareState.BLACK);
+            }
+        }
+        point.y= BOARD_WIDTH-1;
+        for (point.x = 0; point.x < BOARD_WIDTH; point.x++) {
+            board.makeMove(point, SquareState.WHITE);
+        }
+        Assertions.assertEquals(board.getPossibleMoves(Player.WHITE).size(), 0);
+    }
+
+    /**
+     * Boundary Testing
+     * Check if there are any possible moves below row index at 1
+     */
+    @Test
+    void Board_BoundaryTesting_Valid_Board_Should_Have_PossibleMoves_Below_RowIndex1() {
+        Board board = new Board();
+        // should create 8 x 8 board
+        int BOARD_LENGTH = 8;
+        int BOARD_WIDTH = 8;
+        Point point = new Point();
+
+        for (point.x = 1; point.x < BOARD_LENGTH; point.x++) {
+            for (point.y = 0; point.y < BOARD_WIDTH; point.y++) {
+                board.makeMove(point, SquareState.BLACK);
+            }
+        }
+        point.x = BOARD_LENGTH-1;
+        for (point.y = 0; point.y < BOARD_WIDTH; point.y++) {
+            board.makeMove(point, SquareState.WHITE);
+        }
+        Assertions.assertTrue(board.getPossibleMoves(Player.WHITE).size() > 0);
+    }
+
+    /**
+     * Boundary Testing
+     * Check if there are any possible moves above row index at 6
+     */
+    @Test
+    void Board_BoundaryTesting_Valid_Board_Should_Have_PossibleMoves_Above_RowIndex6() {
+        Board board = new Board();
+        // should create 8 x 8 board
+        int BOARD_LENGTH = 8;
+        int BOARD_WIDTH = 8;
+        Point point = new Point();
+
+        for (point.x = 0; point.x < BOARD_LENGTH-1; point.x++) {
+            for (point.y = 0; point.y < BOARD_WIDTH; point.y++) {
+                board.makeMove(point, SquareState.BLACK);
+            }
+        }
+        point.x = 0;
+        for (point.y = 0; point.y < BOARD_WIDTH; point.y++) {
+            board.makeMove(point, SquareState.WHITE);
+        }
+        Assertions.assertTrue(board.getPossibleMoves(Player.WHITE).size() > 0);
+    }
+
+    /**
+     * Boundary Testing
+     * Check if there are any possible moves above column index at 6
+     */
+    @Test
+    void Board_BoundaryTesting_Valid_Board_Should_Have_PossibleMoves_Above_ColumnIndex6() {
+        Board board = new Board();
+        // should create 8 x 8 board
+        int BOARD_LENGTH = 8;
+        int BOARD_WIDTH = 8;
+        Point point = new Point();
+
+        for (point.x = 0; point.x < BOARD_LENGTH; point.x++) {
+            for (point.y = 0; point.y < BOARD_WIDTH-1; point.y++) {
+                board.makeMove(point, SquareState.BLACK);
+            }
+        }
+        point.y= 0;
+        for (point.x = 0; point.x < BOARD_WIDTH; point.x++) {
+            board.makeMove(point, SquareState.WHITE);
+        }
+        Assertions.assertTrue(board.getPossibleMoves(Player.WHITE).size() > 0);
+    }
+
+    /**
+     * Boundary Testing
+     * Check if there are any possible moves below column index at 1
+     */
+    @Test
+    void Board_BoundaryTesting_Valid_Board_Should_Have_PossibleMoves_Below_ColumnIndex1() {
+        Board board = new Board();
+        // should create 8 x 8 board
+        int BOARD_LENGTH = 8;
+        int BOARD_WIDTH = 8;
+        Point point = new Point();
+
+        for (point.x = 0; point.x < BOARD_LENGTH; point.x++) {
+            for (point.y = 1; point.y < BOARD_WIDTH; point.y++) {
+                board.makeMove(point, SquareState.BLACK);
+            }
+        }
+        point.y= BOARD_WIDTH-1;
+        for (point.x = 0; point.x < BOARD_WIDTH; point.x++) {
+            board.makeMove(point, SquareState.WHITE);
+        }
+        Assertions.assertTrue(board.getPossibleMoves(Player.WHITE).size() > 0);
+    }
+
 }
