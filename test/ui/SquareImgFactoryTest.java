@@ -1,22 +1,9 @@
 package ui;
 
 import java.awt.*;
-import core.SquareState;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.*;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-//import org.mockito.junit.jupiter.MockitoExtension;
-import java.util.List;
-import java.util.Properties;
-import java.util.ArrayList;
 
 public class SquareImgFactoryTest extends SquareImgFactory {
 
