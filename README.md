@@ -7,7 +7,7 @@
 
 Basically, there are two sided chips (also called discs) on a board. One side is black, and one side is white. Yours are the black chips and your opponents are the white. You can play the computer or another player. The goal is to end the game with as many chips showing your color as possible. To do this, you must sandwich your opponents chip(s) between a piece (showing your own color) currently on the board, and the piece you're putting down.
 
-## Screenshot
+## Screenshots
 
 ![gui_othello](shots/mid_shot.png)
 <br/>
@@ -27,7 +27,7 @@ Basically, there are two sided chips (also called discs) on a board. One side is
 
 [Othello](https://github.com/c00kiemon5ter/Othello) is licensed under [GNU GPLv3](http://www.gnu.org/licenses/gpl.txt) license. See [COPYING](https://github.com/c00kiemon5ter/Othello/blob/master/COPYING) for further information.
 
-## Unit Testing
+## Build Instruction
 
 1. Download and install the IntelliJ IDE - Community Version
    (https://www.jetbrains.com/idea/download/#section=windows)
