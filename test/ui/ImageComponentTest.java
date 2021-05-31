@@ -3,8 +3,6 @@ package ui;
 import java.awt.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class ImageComponentTest {
 
@@ -29,27 +27,7 @@ public class ImageComponentTest {
     }
 
     @Test
-    void ImageComponent_Paint_Mock_Valid() {
-        final Image image = Toolkit.getDefaultToolkit().getImage("src/ui/images/rows.png");
-        ImageComponent imageComponent = new ImageComponent(image);
-
-        // create mock class
-        Graphics mockGraphics = mock(Graphics.class);
-
-        // Verify successful run of paint()
-        try
-        {
-            when(mockGraphics.drawImage(image, 0, 0, imageComponent)).thenReturn(true);
-            imageComponent.paint(mockGraphics);
-        }
-        catch(Exception ex)
-        {
-            Assertions.fail("ImageComponent.paint should not throw");
-        }
-    }
-
-    @Test
-    void ImageComponent_Paint_Mock_invalid() {
+    void ImageComponent_Paint_invalid() {
         final Image image = Toolkit.getDefaultToolkit().getImage("src/ui/images/rows.png");
         ImageComponent imageComponent = new ImageComponent(image);
 
@@ -62,7 +40,7 @@ public class ImageComponentTest {
         }
         catch(Exception ex)
         {
-            Assertions.assertEquals(ex.getMessage(), "Cannot invoke \"java.awt.Graphics.drawImage(java.awt.Image, int, int, java.awt.image.ImageObserver)\" because \"g\" is null");
+            Assertions.assertNotNull(ex, "Should throw an exception with null graphics");
         }
     }
 }

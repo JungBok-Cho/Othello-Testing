@@ -1,14 +1,15 @@
 package ui;
 
 import java.awt.*;
+import java.awt.image.ImageProducer;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
 public class SquareImgFactoryTest extends SquareImgFactory {
-
     @Test
-    void SquareImgFactory_SquareType_Valid_Should_be_Black() {
+    void SquareImgFactory_SquareType_Valid_Should_be_Black_PreferredSize() {
         int imagesize = 22;
         final Image blackDiscImg = Toolkit.getDefaultToolkit().getImage("src/ui/images/black.png").getScaledInstance(imagesize, imagesize, Image.SCALE_SMOOTH);
         ImageComponent blackImageComponent = new ImageComponent(blackDiscImg);
@@ -16,7 +17,7 @@ public class SquareImgFactoryTest extends SquareImgFactory {
     }
 
     @Test
-    void SquareImgFactory_SquareType_Valid_Should_be_White() {
+    void SquareImgFactory_SquareType_Valid_Should_be_White_PreferredSize() {
         int imagesize = 22;
         final Image whiteDiscImg = Toolkit.getDefaultToolkit().getImage("src/ui/images/white.png").getScaledInstance(imagesize, imagesize, Image.SCALE_SMOOTH);
         ImageComponent whiteImageComponent = new ImageComponent(whiteDiscImg);
