@@ -3,6 +3,8 @@ $password   = 'Abc123456.'
 $secstr     = New-Object -TypeName System.Security.SecureString
 $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)}
 $date = Get-Date
+$emailaddress = Read-Host 'What is your email?'
+
 $TextFile = ".\result.txt"
 $a = Get-Content -Path $TextFile
 $build = "`r`n" +"Build is successful = false"
@@ -30,7 +32,7 @@ $a | foreach {
 }
 $hash = @{
     from        = "testcase353@gmail.com"
-    to          = "chojb2015@gmail.com"
+    to          = $emailaddress
     subject     = "Milestone2 Regression Testing Result"
     smtpserver  = "smtp.gmail.com"
     port        = "587"
