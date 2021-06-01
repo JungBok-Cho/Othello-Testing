@@ -30,6 +30,19 @@ public class ImageComponentTest {
     }
 
     @Test
+    void ImageComponent_Valid_Interrupt() {
+        Thread newThread = new Thread(() -> {
+            // created a large size image, such that the processing takes time and interrupted
+            int imagesize = 999999999;
+            final Image image = Toolkit.getDefaultToolkit().getImage("src/ui/images/black.png").getScaledInstance(imagesize, imagesize, Image.SCALE_SMOOTH);
+            ImageComponent imageComponent = new ImageComponent(image);
+            Assertions.fail("The thread should be interrupted before ImageComponent is instantiated");
+        });
+        newThread.start();
+        newThread.interrupt();
+    }
+
+    @Test
     void ImageComponent_Paint_invalid() {
         final Image image = Toolkit.getDefaultToolkit().getImage("src/ui/images/rows.png");
         ImageComponent imageComponent = new ImageComponent(image);
