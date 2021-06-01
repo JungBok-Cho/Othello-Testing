@@ -1,35 +1,35 @@
+# Default sender's email and password
 $username   = 'testcase353@gmail.com'
 $password   = 'Abc123456.'
 $secstr     = New-Object -TypeName System.Security.SecureString
 $password.ToCharArray() | ForEach-Object {$secstr.AppendChar($_)}
-$date = Get-Date
+
+# Ask for the receiver's email
 $emailaddress = Read-Host 'What is your email?'
 
-$TextFile = ".\result.txt"
-$a = Get-Content -Path $TextFile
+# To check if the build is successful
 $build = "`r`n" +"Build is successful = false"
+
+# Parse result.txt
+$a = Get-Content -Path ".\result.txt"
 $a | foreach {
-    if($_ -ilike "*found*")
-    {
-        $z = $_.indexOf("found")
+    # To get total tests info
+    if($_ -ilike "*found*") {
         $total = $_
     }
-
-    if($_ -ilike "*failed*")
-    {
-        $b = $_.indexOf("failed")
+    # To get failed tests info
+    if($_ -ilike "*failed*") {
         $failed = $_
     }
-    if($_ -ilike "*successful*"){
+    # To get successsful tests info
+    if($_ -ilike "*successful*") {
         $_ | Get-Member
-        $x = $_.indexOf("successful")
         $passed = "`r"+ $_
-        $x | Get-Member
-        write-Output $_
         $build = "`r`n" +"Build is successful = True"
     }
-    write-Output $_
 }
+
+# Send email with resultSummary.txt
 $hash = @{
     from        = "testcase353@gmail.com"
     to          = $emailaddress
