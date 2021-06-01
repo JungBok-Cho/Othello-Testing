@@ -34,7 +34,7 @@ class DifficultyLevelTest {
         Assertions.assertEquals(difficultyLevelInstance.level(), DifficultyLevel.HEROIC.level());
     }
 
-    // Below testcases are added after mutation testing. as above testcases failed to catch
+    // Below testcases are added after mutant testing, since above testcases failed to catch
 
     @Test
     void DifficultyLevel_description_level_Valid_Should_Set_Easy_HardCodedLevel() {
@@ -62,26 +62,26 @@ class DifficultyLevelTest {
     }
 
     @Test
-    void DifficultyLevel_description_level_Valid_Should_Set_Easy_HardCodedDescriptonMatch() {
+    void DifficultyLevel_description_level_Valid_Should_Set_Easy_HardCodedDescripton() {
         DifficultyLevel difficultyLevelInstance = DifficultyLevel.EASY;
 
         Assertions.assertEquals(difficultyLevelInstance.description(), "Easy");
     }
 
     @Test
-    void DifficultyLevel_description_level_Valid_Should_Set_Normal_HardCodedDescriptonMatch() {
+    void DifficultyLevel_description_level_Valid_Should_Set_Normal_HardCodedDescripton() {
         DifficultyLevel difficultyLevelInstance = DifficultyLevel.NORMAL;
         Assertions.assertEquals(difficultyLevelInstance.description(), "Normal");
     }
 
     @Test
-    void DifficultyLevel_description_level_Valid_Should_Set_Hard_HardCodedDescriptonMatch() {
+    void DifficultyLevel_description_level_Valid_Should_Set_Hard_HardCodedDescripton() {
         DifficultyLevel difficultyLevelInstance = DifficultyLevel.HARD;
         Assertions.assertEquals(difficultyLevelInstance.description(), "Hard");
     }
 
     @Test
-    void DifficultyLevel_description_level_Valid_Should_Set_Heroic_HardCodedDescriptonMatch() {
+    void DifficultyLevel_description_level_Valid_Should_Set_Heroic_HardCodedDescripton() {
         DifficultyLevel difficultyLevelInstance = DifficultyLevel.HEROIC;
         Assertions.assertEquals(difficultyLevelInstance.description(), "Heroic");
     }
