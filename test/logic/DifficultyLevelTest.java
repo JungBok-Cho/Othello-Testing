@@ -40,29 +40,50 @@ class DifficultyLevelTest {
     void DifficultyLevel_description_level_Valid_Should_Set_Easy_HardCodedLevel() {
         DifficultyLevel difficultyLevelInstance = DifficultyLevel.EASY;
 
-        Assertions.assertEquals(difficultyLevelInstance.description(), DifficultyLevel.EASY.description());
         Assertions.assertEquals(difficultyLevelInstance.level(), 3);
     }
 
     @Test
     void DifficultyLevel_description_level_Valid_Should_Set_Normal_HardCodedLevel() {
         DifficultyLevel difficultyLevelInstance = DifficultyLevel.NORMAL;
-        Assertions.assertEquals(difficultyLevelInstance.description(), DifficultyLevel.NORMAL.description());
         Assertions.assertEquals(difficultyLevelInstance.level(), 4);
     }
 
     @Test
     void DifficultyLevel_description_level_Valid_Should_Set_Hard_HardCodedLevel() {
         DifficultyLevel difficultyLevelInstance = DifficultyLevel.HARD;
-        Assertions.assertEquals(difficultyLevelInstance.description(), DifficultyLevel.HARD.description());
         Assertions.assertEquals(difficultyLevelInstance.level(), 5);
     }
 
     @Test
     void DifficultyLevel_description_level_Valid_Should_Set_Heroic_HardCodedLevel() {
         DifficultyLevel difficultyLevelInstance = DifficultyLevel.HEROIC;
-        Assertions.assertEquals(difficultyLevelInstance.description(), DifficultyLevel.HEROIC.description());
         Assertions.assertEquals(difficultyLevelInstance.level(), 6);
+    }
+
+    @Test
+    void DifficultyLevel_description_level_Valid_Should_Set_Easy_HardCodedDescriptonMatch() {
+        DifficultyLevel difficultyLevelInstance = DifficultyLevel.EASY;
+
+        Assertions.assertEquals(difficultyLevelInstance.description(), "Easy");
+    }
+
+    @Test
+    void DifficultyLevel_description_level_Valid_Should_Set_Normal_HardCodedDescriptonMatch() {
+        DifficultyLevel difficultyLevelInstance = DifficultyLevel.NORMAL;
+        Assertions.assertEquals(difficultyLevelInstance.description(), "Normal");
+    }
+
+    @Test
+    void DifficultyLevel_description_level_Valid_Should_Set_Hard_HardCodedDescriptonMatch() {
+        DifficultyLevel difficultyLevelInstance = DifficultyLevel.HARD;
+        Assertions.assertEquals(difficultyLevelInstance.description(), "Hard");
+    }
+
+    @Test
+    void DifficultyLevel_description_level_Valid_Should_Set_Heroic_HardCodedDescriptonMatch() {
+        DifficultyLevel difficultyLevelInstance = DifficultyLevel.HEROIC;
+        Assertions.assertEquals(difficultyLevelInstance.description(), "Heroic");
     }
 
  }
