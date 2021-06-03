@@ -29,6 +29,20 @@ $a | foreach {
     }
 }
 
+$spaceOne = ""
+# Parse failureSummary.txt
+if(Test-Path -Path .\failureSummary.txt -PathType Leaf){
+    if(-Not [String]::IsNullOrWhiteSpace((Get-content -Path ".\failureSummary.txt"))){
+        $a = Get-Content -Path ".\failureSummary.txt"
+        $a | foreach {
+            # To get total tests info
+            $failureMsg = $failureMsg + "`r`n" + $_
+            $spaceOne = "`r`n"
+        }
+    }
+}
+
+
 # Send email with resultSummary.txt
 $hash = @{
     from        = "testcase353@gmail.com"
@@ -37,7 +51,7 @@ $hash = @{
     smtpserver  = "smtp.gmail.com"
     port        = "587"
     attachments = ".\resultSummary.txt"
-    body        = "Hello Professor Mike,`r`n`r`nHere is the regression testing report:`r`n $build `r`n $total `r`n $passed `r`n $failed `r`n `r`nBest,`r`nCho/Peter/Kalyani"
+    body        = "Hello Professor Mike,`r`n`r`nHere is the regression testing report:`r`n $build `r`n $total `r`n $passed `r`n $failed `r`n $failureMsg $spaceOne `r`nBest,`r`nCho/Peter/Kalyani"
     credential  = New-Object -typename System.Management.Automation.PSCredential -argumentlist $username, $secstr
     usessl      = $true
     verbose     = $true
